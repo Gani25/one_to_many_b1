@@ -1,0 +1,30 @@
+package com.sprk.one_to_many.entity;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Data
+
+public class Student {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int rollNo;
+
+    private String firstName;
+
+    private String lastName;
+
+    private String phone;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<Course> courses = new ArrayList<>();
+
+}
