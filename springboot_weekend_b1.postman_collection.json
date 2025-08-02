@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "6bc95645-116d-46e9-b844-739080af39d9",
 		"name": "springboot_weekend_b1",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "25217850"
 	},
 	"item": [
@@ -17,13 +17,9 @@
 							"request": {
 								"auth": {
 									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bCIsImlhdCI6MTc0NTY3NTY4MiwiZXhwIjoxNzQ1Njc1NzQyfQ.C_BSwzxnDyKYC68WCSDoprQAcfowwFofP5NIvoyroFk",
-											"type": "string"
-										}
-									]
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bCIsImlhdCI6MTc0NTY3NTY4MiwiZXhwIjoxNzQ1Njc1NzQyfQ.C_BSwzxnDyKYC68WCSDoprQAcfowwFofP5NIvoyroFk"
+									}
 								},
 								"method": "POST",
 								"header": [],
@@ -36,18 +32,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "http://localhost:8080/sprk/student",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"sprk",
-										"student"
-									]
-								}
+								"url": "http://localhost:8080/sprk/student"
 							},
 							"response": []
 						},
@@ -56,18 +41,7 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/sprk/student",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"sprk",
-										"student"
-									]
-								}
+								"url": "http://localhost:8080/sprk/student"
 							},
 							"response": []
 						},
@@ -76,19 +50,7 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/sprk/student/Hello",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"sprk",
-										"student",
-										"Hello"
-									]
-								}
+								"url": "http://localhost:8080/sprk/student/Hello"
 							},
 							"response": []
 						},
@@ -204,17 +166,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:8080/test",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"test"
-							]
-						}
+						"url": "http://localhost:8080/test"
 					},
 					"response": []
 				}
@@ -233,7 +185,25 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"firstName\": \"Sani\",\r\n    \"lastName\": \"Bankar\",\r\n    \"phone\": \"+91 84758 98569\",\r\n    \"studentDetail\": {\r\n        \"hobby\": \"Swimming\",\r\n        \"education\": \"BE CS\"\r\n    }\r\n}",
+									"raw": "{\r\n    \"firstName\": \"Pranjal\",\r\n    \"lastName\": \"Shinde\",\r\n    \"phone\": \"+91 12345 12121\",\r\n    \"courses\": [\r\n        {\r\n            \"courseName\":\"Python\",\r\n            \"courseDescription\":\"Used for AI\",\r\n            \"courseDuration\":\"30 days\"\r\n        },\r\n        {\r\n            \"courseName\":\"Power Bi\",\r\n            \"courseDescription\":\"Best For Analysis\",\r\n            \"courseDuration\":\"20 days\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/save-student"
+							},
+							"response": []
+						},
+						{
+							"name": "update student",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Sani\",\r\n    \"lastName\": \"Bankar\",\r\n    \"phone\": \"+91 88888 98569\",\r\n    \"studentDetail\": {\r\n        \"hobby\": \"Watching Movies\",\r\n        \"education\": \"BsCIT\"\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -241,14 +211,20 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/save-student",
+									"raw": "http://localhost:8080/update-student?rollno=4",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "8080",
 									"path": [
-										"save-student"
+										"update-student"
+									],
+									"query": [
+										{
+											"key": "rollno",
+											"value": "4"
+										}
 									]
 								}
 							},
@@ -259,17 +235,7 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/get-all-student",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"get-all-student"
-									]
-								}
+								"url": "http://localhost:8080/get-all-student"
 							},
 							"response": []
 						},
@@ -279,7 +245,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/get-by-rollno?rollno=4",
+									"raw": "http://localhost:8080/get-by-rollno?rollno=1",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -291,7 +257,189 @@
 									"query": [
 										{
 											"key": "rollno",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "One To Many",
+					"item": [
+						{
+							"name": "save student",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Pranjal\",\r\n    \"lastName\": \"Shinde\",\r\n    \"phone\": \"+91 12345 12121\",\r\n    \"courses\": [\r\n        {\r\n            \"courseName\":\"Python\",\r\n            \"courseDescription\":\"Used for AI\",\r\n            \"courseDuration\":\"30 days\"\r\n        },\r\n        {\r\n            \"courseName\":\"Power Bi\",\r\n            \"courseDescription\":\"Best For Analysis\",\r\n            \"courseDuration\":\"20 days\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/save-student"
+							},
+							"response": []
+						},
+						{
+							"name": "update student",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Sani\",\r\n    \"lastName\": \"Bankar\",\r\n    \"phone\": \"+91 88888 98569\",\r\n    \"studentDetail\": {\r\n        \"hobby\": \"Watching Movies\",\r\n        \"education\": \"BsCIT\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/update-student?rollno=4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"update-student"
+									],
+									"query": [
+										{
+											"key": "rollno",
 											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all students",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/get-all-student"
+							},
+							"response": []
+						},
+						{
+							"name": "get by roll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/get-by-rollno?rollno=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"get-by-rollno"
+									],
+									"query": [
+										{
+											"key": "rollno",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "One To Many",
+					"item": [
+						{
+							"name": "save student",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Pranjal\",\r\n    \"lastName\": \"Shinde\",\r\n    \"phone\": \"+91 12345 12121\",\r\n    \"courses\": [\r\n        {\r\n            \"courseName\":\"Python\",\r\n            \"courseDescription\":\"Used for AI\",\r\n            \"courseDuration\":\"30 days\"\r\n        },\r\n        {\r\n            \"courseName\":\"Power Bi\",\r\n            \"courseDescription\":\"Best For Analysis\",\r\n            \"courseDuration\":\"20 days\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/save-student"
+							},
+							"response": []
+						},
+						{
+							"name": "update student",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Sani\",\r\n    \"lastName\": \"Bankar\",\r\n    \"phone\": \"+91 88888 98569\",\r\n    \"studentDetail\": {\r\n        \"hobby\": \"Watching Movies\",\r\n        \"education\": \"BsCIT\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/update-student?rollno=4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"update-student"
+									],
+									"query": [
+										{
+											"key": "rollno",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all students",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/get-all-student"
+							},
+							"response": []
+						},
+						{
+							"name": "get by roll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/get-by-rollno?rollno=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"get-by-rollno"
+									],
+									"query": [
+										{
+											"key": "rollno",
+											"value": "1"
 										}
 									]
 								}

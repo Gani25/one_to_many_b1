@@ -24,7 +24,7 @@ public class Student {
     private String phone;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonManagedReference
     private List<Course> courses = new ArrayList<>();
 
 }
