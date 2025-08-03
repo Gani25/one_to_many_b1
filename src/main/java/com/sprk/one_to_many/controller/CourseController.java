@@ -75,5 +75,31 @@ public class CourseController {
 
     }
 
+    @DeleteMapping("/delete-course/{rollNo}/{courseName}")
+    public ResponseEntity<?> deleteCourse(@PathVariable int rollNo, @PathVariable String courseName) {
+        Student existingStudent = studentRepository.findById(rollNo).orElse(null);
+        if (existingStudent == null) {
+            return ResponseEntity.status(404).body("Student with roll no = " + rollNo + " not found");
+        }
+        List<Course> existingStudentCourses = existingStudent.getCourses();
+        boolean foundCourse = false;
+        int courseId=0;
+        for (Course course : existingStudentCourses) {
+            if (course.getCourseName().equalsIgnoreCase(courseName)) {
+                foundCourse = true;
+                courseId = course.getCourseId();
+                existingStudentCourses.remove(course);
+            }
+        }
+        existingStudent.setCourses(existingStudentCourses);
+        if(foundCourse) {
+            Course existingCourse = courseRepository.findById(courseId).get();
+            courseRepository.delete(existingCourse);
+            return ResponseEntity.ok(existingStudent);
+        }else{
+            return ResponseEntity.status(404).body("Student with roll no = " + rollNo + " and course = "+courseName+" not found");
+        }
+    }
+
 
 }
