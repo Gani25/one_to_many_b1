@@ -23,7 +23,7 @@ public class Student {
 
     private String phone;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student", cascade = {CascadeType.MERGE, CascadeType.DETACH,CascadeType.PERSIST, CascadeType.REFRESH})
     @JsonManagedReference
     private List<Course> courses = new ArrayList<>();
 
