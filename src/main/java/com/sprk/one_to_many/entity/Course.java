@@ -3,9 +3,11 @@ package com.sprk.one_to_many.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Data
+@ToString(exclude = "student")
 public class Course {
 
     @Id
@@ -22,4 +24,5 @@ public class Course {
     @JoinColumn(name = "roll_no")
     @JsonBackReference
     private Student student;
+
 }
